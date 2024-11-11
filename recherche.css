@@ -1,0 +1,15 @@
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f9fa;
+        }
+
+        h2 {
+            color: #4285f4;
+        }
+
+        .result-item {
+            background-color: #ffffff;
+            border: 1px solid #dcdcdc;
+            border-radius: 8px;
+            box-shadow: 0px 1px 6px rgba(32, 33, 36, 0.28);
+        }
