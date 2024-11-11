@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="css/index.css">
+    <title>Résultats de recherche</title>
+</head>
+<body>
+    <h2>Résultats de recherche pour : "<span id="query"></span>"</h2>
+    <div class="results" id="results"></div>
+
+    <script>
+        // Récupère la requête de recherche depuis l'URL
+        const urlParams = new URLSearchParams(window.location.search);
+        const query = urlParams.get('q');
+        document.getElementById('query').innerText = query;
+
+        // Simule quelques résultats de recherche pour démonstration
+        const fakeResults = [
+            { title: "Article 1", url: "#", description: "Description de l'article 1." },
+            { title: "Article 2", url: "#", description: "Description de l'article 2." },
+            { title: "Article 3", url: "#", description: "Description de l'article 3." }
+        ];
+
+        // Filtre les résultats en fonction de la requête (ici, c'est simulé)
+        const resultsContainer = document.getElementById('results');
+        if (query) {
+            const filteredResults = fakeResults.filter(item => 
+                item.title.toLowerCase().includes(query.toLowerCase()) ||
+                item.description.toLowerCase().includes(query.toLowerCase())
+            );
+
+            // Affiche les résultats filtrés
+            filteredResults.forEach(result => {
+                const resultItem = document.createElement('div');
+                resultItem.className = 'result-item';
+                resultItem.innerHTML = `
+                    <h3><a href="${result.url}">${result.title}</a></h3>
+                    <p>${result.description}</p>
+                `;
+                resultsContainer.appendChild(resultItem);
+            });
+        } else {
+            resultsContainer.innerHTML = "<p>Aucun résultat trouvé.</p>";
+        }
+    </script>
+
+</body>
+</html>
